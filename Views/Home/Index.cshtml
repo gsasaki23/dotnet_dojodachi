@@ -3,9 +3,31 @@
 }
 
 <div class="text-center">
-    <h1 class="display-4">Welcome</h1>
-    <p>Learn about <a href="https://docs.microsoft.com/aspnet/core">building Web apps with ASP.NET Core</a>.</p>
-    <img src="~/founder.jpg" alt="founder">
-    @* <partial name="WonPartial" /> *@
-    @* <partial name="LostPartial" /> *@
+    <div class="status-bar">
+        <h5 class="status-bar-content">Fullness: @ViewBag.DD.Fullness</h5>
+        <h5 class="status-bar-content">Happiness: @ViewBag.DD.Happiness</h5>
+        <h5 class="status-bar-content">Meals: @ViewBag.DD.Meals</h5>
+        <h5 class="status-bar-content">Energy: @ViewBag.DD.Energy</h5>
+    </div>    
+    <div class="result">
+        <img src="~/founder.jpg" alt="founder">
+        <h5>@ViewBag.Result</h5>
+    </div>
+    @if (ViewBag.Partial == "Regular")
+    {
+        <div>
+            <a href="/feed" class="btn-lg bl-border">Feed</a>    
+            <a href="/play" class="btn-lg bl-border">Play</a>    
+            <a href="/work" class="btn-lg bl-border">Work</a>    
+            <a href="/sleep" class="btn-lg bl-border">Sleep</a>    
+        </div>
+    }
+    @if (ViewBag.Partial == "Over")
+    {
+        <div>
+            <a href="/restart" class="btn-lg bl-border">Restart?</a>
+        </div>
+    }
+
+
 </div>
