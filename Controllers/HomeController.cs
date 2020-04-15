@@ -65,7 +65,12 @@ namespace dojodachi.Controllers
             else{
                 HttpContext.Session.SetString("Result",$"Michael had a good meal! +{feedResult} Fullness, -1 Meal.");}
             
-            // win condition
+            // win/loss condition
+            if (dojodachi.dead())
+            {
+                HttpContext.Session.SetString("Result","Michael has moved along...");
+                HttpContext.Session.SetString("Status","Over");
+            }
             if (dojodachi.gameWon())
             {
                 HttpContext.Session.SetString("Result","Congratulations! You won and Michael is proud of you.");
@@ -119,10 +124,15 @@ namespace dojodachi.Controllers
             else{
                 HttpContext.Session.SetString("Result",$"Michael made another video! +{workResult} Meals, -5 Energy.");}
             
-            // loss condition
+            // win/loss condition
             if (dojodachi.dead())
             {
                 HttpContext.Session.SetString("Result","Michael has moved along...");
+                HttpContext.Session.SetString("Status","Over");
+            }
+            if (dojodachi.gameWon())
+            {
+                HttpContext.Session.SetString("Result","Congratulations! You won and Michael is proud of you.");
                 HttpContext.Session.SetString("Status","Over");
             }
             
@@ -140,10 +150,15 @@ namespace dojodachi.Controllers
             // Result
             HttpContext.Session.SetString("Result",$"Michael had a good nap! +15 Energy, -5 Fullness, -5 Happiness.");
             
-            // loss condition
+            // win/loss condition
             if (dojodachi.dead())
             {
                 HttpContext.Session.SetString("Result","Michael has moved along...");
+                HttpContext.Session.SetString("Status","Over");
+            }
+            if (dojodachi.gameWon())
+            {
+                HttpContext.Session.SetString("Result","Congratulations! You won and Michael is proud of you.");
                 HttpContext.Session.SetString("Status","Over");
             }
             
