@@ -13,7 +13,7 @@
         <img src="~/founder.jpg" alt="founder">
         <h5>@ViewBag.Result</h5>
     </div>
-    @if (ViewBag.Partial == "Regular")
+    @if (ViewBag.Status == "Regular")
     {
         <div>
             <a href="/feed" class="btn-lg bl-border">Feed</a>    
@@ -22,10 +22,10 @@
             <a href="/sleep" class="btn-lg bl-border">Sleep</a>    
         </div>
     }
-    @if (ViewBag.Partial == "Over")
+    @if (ViewBag.Status == "Over")
     {
         <div>
-            <a href="/restart" class="btn-lg bl-border">Restart?</a>
+            <a href="/reset" class="btn-lg bl-border">Restart?</a>
         </div>
     }
 

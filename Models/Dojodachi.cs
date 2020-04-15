@@ -17,37 +17,59 @@ namespace dojodachi.Models
             Meals = 3;
         }
 
-        public void feed()
+        public string feed()
         {
-            // cost 1 meal, dont feed if no meals
-            // gain random fullness 5-10
-                // 25% chance to fail (meal still charged)
+            // Don't feed if no meals left
+            if (this.Meals == 0){return "noMeals";}
+            // -1 meal and +5~10 fullness (25% fail)
+            this.Meals--;
+            if(new Random().Next(0,4) != 0){
+                int diff = new Random().Next(5,11);
+                this.Fullness += diff;
+                return diff.ToString();
+            }
+            return "fail";
         }
-        public void play()
+        public string play()
         {
-            // costs 5 energy
-            // gain random happiness 5-10
-                // 25% chance to fail (energy still charged)
+            // Don't play if no energy left
+            if (this.Energy < 5){return "noEnergy";}
+            // -5 energy and +5~10 happiness (25% fail)
+            this.Energy -= 5;
+            if(new Random().Next(0,4) != 0){
+                int diff = new Random().Next(5,11);
+                this.Happiness += diff;
+                return diff.ToString();
+            }
+            return "fail";
         }
-        public void work()
+        public string work()
         {
-            // costs 5 energy
-            // earn random 1~3 meals
+            // Don't work if no energy left
+            if (this.Energy < 5){return "noEnergy";}
+            // -5 energy and +1~3 meals
+            this.Energy -= 5;
+            int diff = new Random().Next(1,4);
+            this.Meals += diff;
+            return diff.ToString();
         }
-        public void sleep()
+        public string sleep()
         {
-            // earn 15 energy
-            // decrease fullness and happiness by 5 each
+            // +15 energy and -5 fullness and -5 happiness
+            this.Energy += 15;
+            this.Fullness -= 5;
+            this.Happiness -= 5;
+            return "";
         }
 
         public bool gameWon()
         {
-            return Energy >= 100 && Fullness >= 100 && Happiness >= 100;
+            return Fullness >= 100 && Happiness >= 100;
         }
 
         public bool dead()
         {
-            return Fullness <= 0 || Happiness <= 0;
+            return Fullness <= 0 || Happiness <= 0 || Energy <= 0;
         }
     }
 }
