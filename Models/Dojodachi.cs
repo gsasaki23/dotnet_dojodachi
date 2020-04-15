@@ -64,12 +64,12 @@ namespace dojodachi.Models
 
         public bool gameWon()
         {
-            return Fullness >= 100 && Happiness >= 100;
+            return Energy >= 100 && Fullness >= 100 && Happiness >= 100;
         }
 
         public bool dead()
         {
-            return Fullness <= 0 || Happiness <= 0 || Energy <= 0;
+            return Fullness <= 0 || Happiness <= 0;
         }
     }
 }

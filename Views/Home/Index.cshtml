@@ -8,18 +8,23 @@
         <h5 class="status-bar-content">Happiness: @ViewBag.DD.Happiness</h5>
         <h5 class="status-bar-content">Meals: @ViewBag.DD.Meals</h5>
         <h5 class="status-bar-content">Energy: @ViewBag.DD.Energy</h5>
-    </div>    
+    </div> 
     <div class="result">
+        <h4>Get Fullness, Happiness, and Energy over 100!</h4>
         <img src="~/founder.jpg" alt="founder">
-        <h5>@ViewBag.Result</h5>
+        <h5 class="resultScript">@ViewBag.Result</h5>
     </div>
     @if (ViewBag.Status == "Regular")
     {
         <div>
-            <a href="/feed" class="btn-lg bl-border">Feed</a>    
+            <a href="/feed" class="btn-lg bl-border">Feed</a>  
+            <p class="buttons">(-1 Meal)</p>
             <a href="/play" class="btn-lg bl-border">Play</a>    
+            <p class="buttons">(-5 Energy)</p>
             <a href="/work" class="btn-lg bl-border">Work</a>    
+            <p class="buttons">(-5 Energy)</p>
             <a href="/sleep" class="btn-lg bl-border">Sleep</a>    
+            <p class="buttons">(-5 Fullness & Happiness)</p>
         </div>
     }
     @if (ViewBag.Status == "Over")
